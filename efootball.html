@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eFootball 2027 - กล่องสุ่มไอดี & ร้านค้า</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        efb: {
+                            dark: '#0F172A',
+                            main: '#0091EA',
+                            gold: '#FFD700',
+                            green: '#00C853',
+                            red: '#FF1744',
+                            purple: '#7C4DFF',
+                            light: '#E3F2FD'
+                        }
+                    },
+                    fontFamily: {
+                        cartoon: ['"Bangers"', 'cursive', 'sans-serif'],
+                        thai: ['"Noto Sans Thai"', 'sans-serif']
+                    },
+                    animation: {
+                        'bounce-slow': 'bounce 2s infinite',
+                        'shake': 'shake 0.5s ease-in-out',
+                        'glow': 'glow 1.5s ease-in-out infinite alternate',
+                        'float': 'float 3s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        shake: {
+                            '0%, 100%': { transform: 'rotate(0deg)' },
+                            '25%': { transform: 'rotate(-5deg)' },
+                            '75%': { transform: 'rotate(5deg)' }
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 10px #FFD700' },
+                            '100%': { boxShadow: '0 0 30px #FFD700, 0 0 50px #FF8C00' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-stroke {
+                -webkit-text-stroke: 2px #000;
+            }
+            .card-3d {
+                transform-style: preserve-3d;
+                transition: transform 0.3s ease;
+            }
+            .card-3d:hover {
+                transform: perspective(1000px) rotateX(5deg) rotateY(-5deg);
+            }
+            .bg-pitch {
+                background: linear-gradient(to bottom, #00913C 0%, #006B2E 100%);
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Noto+Sans+Thai:wght@400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="font-thai bg-efb-dark text-white min-h-screen">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-black/80 backdrop-blur-md border-b border-efb-gold/30">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="font-cartoon text-3xl text-efb-gold tracking-wider">
+                ⚽ eFootball 2027
+            </a>
+            <nav class="hidden md:flex gap-6">
+                <a href="#home" class="hover:text-efb-gold transition-colors">หน้าแรก</a>
+                <a href="#gacha" class="hover:text-efb-gold transition-colors">กล่องสุ่ม</a>
+                <a href="#shop" class="hover:text-efb-gold transition-colors">ร้านขายไอดี</a>
+                <a href="#about" class="hover:text-efb-gold transition-colors">เกี่ยวกับเรา</a>
+            </nav>
+            <div class="flex items-center gap-3">
+                <span class="bg-efb-gold/20 px-3 py-1 rounded-full text-efb-gold font-bold">
+                    <i class="fa fa-coins mr-1"></i> <span id="coins">500</span>
+                </span>
+                <button class="md:hidden text-2xl" id="menuBtn"><i class="fa fa-bars"></i></button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-black/95 absolute w-full px-4 pb-4" id="mobileMenu">
+            <nav class="flex flex-col gap-3">
+                <a href="#home" class="py-2 hover:text-efb-gold">หน้าแรก</a>
+                <a href="#gacha" class="py-2 hover:text-efb-gold">กล่องสุ่ม</a>
+                <a href="#shop" class="py-2 hover:text-efb-gold">ร้านขายไอดี</a>
+                <a href="#about" class="py-2 hover:text-efb-gold">เกี่ยวกับเรา</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative py-16 md:py-24 overflow-hidden">
+        <div class="absolute inset-0 bg-pitch opacity-20"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="font-cartoon text-[clamp(2.5rem,8vw,5rem)] text-efb-gold mb-6 animate-float">
+                    ⚽ กล่องสุ่มไอดี eFootball 2027 ⚽
+                </h1>
+                <p class="text-lg md:text-2xl text-efb-light mb-8">
+                    ลุ้นรับไอดีนักเตะระดับตำนาน! ความพรีเมียมรอคุณอยู่
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#gacha" class="px-8 py-3 bg-efb-gold text-black font-bold rounded-full text-lg hover:bg-yellow-400 transition-all shadow-lg shadow-efb-gold/30 animate-glow">
+                        🎁 เปิดกล่องสุ่มเลย!
+                    </a>
+                    <a href="#shop" class="px-8 py-3 bg-efb-main text-white font-bold rounded-full text-lg hover:bg-sky-400 transition-all">
+                        🛒 ซื้อไอดีโดยตรง
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Disclaimer -->
+    <section class="bg-efb-purple/10 border-y border-efb-purple/30 py-3">
+        <div class="container mx-auto px-4">
+            <p class="text-center text-sm text-efb-light/80">
+                ⚠️ เพียงงานสร้างสรรค์ ไม่เกี่ยวข้องกับ Konami อย่างเป็นทางการ การซื้อขายไอดีอาจมีความเสี่ยง
+            </p>
+        </div>
+    </section>
+
+    <!-- Gacha Box Section -->
+    <section id="gacha" class="py-16 bg-gradient-to-b from-efb-dark via-sky-900/20 to-efb-dark">
+        <div class="container mx-auto px-4">
+            <h2 class="font-cartoon text-4xl text-center text-efb-gold mb-12">🎁 กล่องสุ่มไอดีนักเตะ</h2>
+            
+            <div class="max-w-2xl mx-auto">
+                <!-- Box Display -->
+                <div class="relative">
+                    <div id="gachaBox" class="w-64 h-72 mx-auto perspective-1000 cursor-pointer">
+                        <div class="w-full h-full bg-gradient-to-br from-efb-gold via-yellow-500 to-orange-500 rounded-2xl shadow-2xl shadow-efb-gold/40 flex flex-col items-center justify-center card-3d border-4 border-yellow-300">
+                            <div class="text-7xl mb-4">📦</div>
+                            <p class="font-cartoon text-2xl text-black">กล่องสุ่มพรีเมียม</p>
+                            <p class="text-black/70 mt-2">แตะเพื่อเปิด!</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Result Card -->
+                    <div id="resultCard" class="hidden absolute inset-0 flex items-center justify-center">
+                        <div class="w-72 bg-gradient-to-br from-sky-500 to-blue-700 rounded-2xl p-6 shadow-2xl border-4 border-white text-center">
+                            <div class="text-6xl mb-3" id="playerIcon">⚽</div>
+                            <h3 class="font-cartoon text-2xl text-efb-gold mb-2" id="playerName">นักเตะระดับตำนาน</h3>
+                            <p class="text-sm text-sky-100 mb-3" id="playerRarity">⭐⭐⭐⭐⭐ ระดับตำนาน</p>
+                            <p class="text-xs text-sky-200 mb-4" id="playerDesc">ไอดีพร้อมใช้งาน มีนักเตะดาวรุ่งพร้อมพัฒนา</p>
+                            <button id="claimBtn" class="px-4 py-2 bg-efb-gold text-black rounded-full font-bold hover:bg-yellow-400 transition-colors">
+                                ✅ รับไอดีนี้
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gacha Info -->
+                <div class="mt-10 text-center">
+                    <p class="text-lg mb-4">ค่าการเปิด: <span class="text-efb-gold font-bold">100 เหรียญ</span> ต่อครั้ง</p>
+                    <button id="openBtn" class="px-8 py-3 bg-efb-gold text-black rounded-full font-bold text-lg hover:bg-yellow-400 transition-colors">
+                        🎲 เปิด 1 ครั้ง (100 เหรียญ)
+                    </button>
+                    <button id="open10Btn" class="ml-3 px-8 py-3 bg-efb-purple text-white rounded-full font-bold text-lg hover:bg-purple-500 transition-colors">
+                        🔥 เปิด 10 ครั้ง (900 เหรียญ)
+                    </button>
+                </div>
+
+                <!-- Probability -->
+                <div class="mt-8 bg-white/5 rounded-xl p-5 border border-white/10">
+                    <h4 class="font-bold text-efb-gold mb-3">📊 อัตราการได้รับ</h4>
+                    <div class="grid grid-cols-2 gap-2 text-sm">
+                        <div class="flex justify-between"><span>⭐⭐⭐⭐⭐ ตำนาน</span><span class="text-efb-gold">3%</span></div>
+                        <div class="flex justify-between"><span>⭐⭐⭐⭐ ระดับสูง</span><span class="text-sky-400">12%</span></div>
+                        <div class="flex justify-between"><span>⭐⭐⭐ ระดับดี</span><span class="text-green-400">35%</span></div>
+                        <div class="flex justify-between"><span>⭐⭐ ระดับปกติ</span><span class="text-gray-400">50%</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop Section -->
+    <section id="shop" class="py-16 bg-gradient-to-b from-efb-dark to-slate-900">
+        <div class="container mx-auto px-4">
+            <h2 class="font-cartoon text-4xl text-center text-efb-gold mb-4">🛒 ร้านขายไอดีเกม</h2>
+            <p class="text-center text-gray-400 mb-10">เลือกซื้อไอดีตรงใจได้ทันที ไม่ต้องสุ่ม!</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Product 1 -->
+                <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden border border-efb-gold/30 hover:border-efb-gold transition-colors group">
+                    <div class="h-48 bg-pitch flex items-center justify-center text-6xl">🏆</div>
+                    <div class="p-5">
+                        <span class="inline-block px-2 py-1 bg-efb-gold/20 text-efb-gold text-xs rounded-full mb-2">⭐⭐⭐⭐⭐ ตำนาน</span>
+                        <h3 class="font-bold text-lg mb-2">ไอดีเต็มทีมตำนาน - Messi + Ronaldo</h3>
+                        <p class="text-gray-400 text-sm mb-3">ทีมครบทุกตำแหน่ง นักเตะระดับตำนานพร้อมสกิลเต็ม</p>
+                        <div class="flex justify-between items-center">
+                            <p class="text-efb-gold font-bold text-xl">฿ 3,990</p>
+                            <button class="px-3 py-2 bg-efb-green rounded-lg text-white font-medium hover:bg-green-500 transition-colors buy-btn">
+                                <i class="fa fa-shopping-cart mr-1"></i> ซื้อเลย
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden border border-sky-500/30 hover:border-sky-500 transition-colors group">
+                    <div class="h-48 bg-pitch flex items-center justify-center text-6xl">⚽</div>
+                    <div class="p-5">
+                        <span class="inline-block px-2 py-1 bg-sky-500/20 text-sky-400 text-xs rounded-full mb-2">⭐⭐⭐⭐ ระดับสูง</span>
+                        <h3 class="font-bold text-lg mb-2">ไอดีทีมพรีเมียม - ทีมชาติฝรั่งเศส</h3>
+                        <p class="text-gray-400 text-sm mb-3">Mbappe + Griezmann ทีมแข็งแกร่งพร้อมลุยทุกการแข่งขัน</p>
+                        <div class="flex justify-between items-center">
+                            <p class="text-efb-gold font-bold text-xl">฿ 1,590</p>
+                            <button class="px-3 py-2 bg-efb-green rounded-lg text-white font-medium hover:bg-green-500 transition-colors buy-btn">
+                                <i class="fa fa-shopping-cart mr-1"></i> ซื้อเลย
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden border border-green-500/30 hover:border-green-500 transition-colors group">
+                    <div class="h-48 bg-pitch flex items-center justify-center text-6xl">🥅</div>
+                    <div class="p-5">
+                        <span class="inline-block px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded-full mb-2">⭐⭐⭐ ระดับดี</span>
+                        <h3 class="font-bold text-lg mb-2">ไอดีเริ่มต้นดี - ทีมอังกฤษ รุ่นน้อง</h3>
+                        <p class="text-gray-400 text-sm mb-3">นักเตะดาวรุ่งพร้อมพัฒนา งบประมาณประหยัด คุ้มค่า</p>
+                        <div class="flex justify-between items-center">
+                            <p class="text-efb-gold font-bold text-xl">฿ 399</p>
+                            <button class="px-3 py-2 bg-efb-green rounded-lg text-white font-medium hover:bg-green-500 transition-colors buy-btn">
+                                <i class="fa fa-shopping-cart mr-1"></i> ซื้อเลย
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-10 border-t border-white/10">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="font-cartoon text-2xl text-efb-gold mb-4">⚽ eFootball 2027 Market ⚽</h3>
+            <p class="text-gray-500 text-sm mb-4">ไม่เกี่ยวข้องกับ Konami จริง การซื้อขายไอดีมีความเสี่ยง</p>
+            <p class="text-gray-600 text-xs">© 2026 eFootball 2027 Market. สร้างเพื่อความบันเทิง</p>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="modal" class="fixed inset-0 bg-black/80 flex items-center justify-center z-50 hidden">
+        <div class="bg-slate-800 rounded-2xl p-6 max-w-md w-full mx-4 border border-efb-gold/30">
+            <h3 class="font-cartoon text-2xl text-efb-gold mb-4 text-center">ยืนยันการซื้อ</h3>
+            <p class="mb-4 text-center" id="modalText">คุณต้องการยืนยันการซื้อไอดีนี้หรือไม่?</p>
+            <div class="flex gap-3">
+                <button id="modalCancel" class="flex-1 py-2 bg-gray-700 rounded-lg hover:bg-gray-600">ยกเลิก</button>
+                <button id="modalConfirm" class="flex-1 py-2 bg-efb-gold text-black rounded-lg font-bold hover:bg-yellow-400">ยืนยัน</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script>
+        // Mobile menu
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+        // Gacha system
+        let coins = 500;
+        const coinEl = document.getElementById('coins');
+        const gachaBox = document.getElementById('gachaBox');
+        const resultCard = document.getElementById('resultCard');
+        const openBtn = document.getElementById('openBtn');
+        const open10Btn = document.getElementById('open10Btn');
+        const claimBtn = document.getElementById('claimBtn');
+
+        const players = [
+            { name: 'เมสซี่ - ตำนาน', icon: '🐐', rarity: '⭐⭐⭐⭐⭐', color: 'from-yellow-400 to-amber-600', desc: 'พร้อมสกิลเต็ม พลังสูงสุด' },
+            { name: 'โรนัลโด้ - ตำนาน', icon: '⚡', rarity: '⭐⭐⭐⭐⭐', color: 'from-yellow-400 to-amber-600', desc: 'คมกริบทุกจังหวะโหม่ง' },
+            { name: 'เอ็มบัปเป้ - ดาวรุ่ง', icon: '🏃', rarity: '⭐⭐⭐⭐', color: 'from-sky-400 to-blue-600', desc: 'ความเร็วสูง พุ่งทะลุแนวรับ' },
+            { name: 'ฮาแลนด์ - หอกจรวด', icon: '💥', rarity: '⭐⭐⭐⭐', color: 'from-sky-400 to-blue-600', desc: 'จบสกอร์เฉียบคม' },
+            { name: 'ซาลาห์ - ปีกเทพ', icon: '🔥', rarity: '⭐⭐⭐', color: 'from-green-400 to-emerald-600', desc: 'ปีกขวาครบเครื่อง' },
+            { name: 'เดอ บรอยน์ - จอมทัพ', icon: '🎯', rarity: '⭐⭐⭐', color: 'from-green-400 to-emerald-600', desc: 'จ่ายบอลแม่นยำ' },
+            { name: 'นักเตะรุ่นเยาว์', icon: '👦', rarity: '⭐⭐', color: 'from-gray-400 to-gray-600', desc: 'พร้อมพัฒนาเป็นดาวเด่น' }
+        ];
+
+        function getRandomPlayer() {
+            const roll = Math.random() * 100;
+            if (roll < 3) return players[Math.floor(Math.random() * 2)]; // 5-star
+            if (roll < 15) return players[2 + Math.floor(Math.random() * 2)]; // 4-star
+            if (roll < 50) return players[4 + Math.floor(Math.random() * 2)]; // 3-star
+            return players[6]; // 2-star
+        }
+
+        function openGacha(cost = 100, count = 1) {
+            if (coins < cost) {
+                alert('❌ เหรียญไม่พอ! กรุณาเติมเงินก่อนครับ');
+                return;
+            }
+            coins -= cost;
+            coinEl.textContent = coins;
+
+            // Animation
+            gachaBox.style.animation = 'shake 0.5s ease-in-out 3';
+            setTimeout(() => {
+                gachaBox.style.animation = '';
+                const player = getRandomPlayer();
+                document.getElementById('playerIcon').textContent = player.icon;
+                document.getElementById('playerName').textContent = player.name;
+                document.getElementById('playerRarity').textContent = player.rarity + ' ระดับคุณภาพ';
+                document.getElementById('playerDesc').textContent = player.desc;
+                resultCard.classList.remove('hidden');
+            }, 1500);
+        }
+
+        openBtn.addEventListener('click', () => {
+            resultCard.classList.add('hidden');
+            openGacha(100, 1);
+        });
+        open10Btn.addEventListener('click', () => {
+            resultCard.classList.add('hidden');
+            openGacha(900, 10);
+        });
+        claimBtn.addEventListener('click', () => {
+            alert('✅ รับไอดีสำเร็จ! ตรวจสอบที่กล่องข้อความของคุณครับ');
+            resultCard.classList.add('hidden');
+        });
+
+        // Shop buy buttons
+        const modal = document.getElementById('modal');
+        const modalText = document.getElementById('modalText');
+        const modalCancel = document.getElementById('modalCancel');
+        const modalConfirm = document.getElementById('modalConfirm');
+        let selectedItem = null;
+
+        document.querySelectorAll('.buy-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                selectedItem = btn.closest('h3').textContent;
+                modalText.textContent = `คุณต้องการซื้อ "${selectedItem}" ใช่หรือไม่?`;
+                modal.classList.remove('hidden');
+            });
+        });
+
+        modalCancel.addEventListener('click', () => {
+            modal.classList.add('hidden');
+            selectedItem = null;
+        });
+        modalConfirm.addEventListener('click', () => {
+            modal.classList.add('hidden');
+            alert('✅ สั่งซื้อสำเร็จ! กรุณาชำระเงินตามช่องทางที่ระบุ ไอดีจะส่งให้ทันทีหลังจากตรวจสอบครับ');
+            selectedItem = null;
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
